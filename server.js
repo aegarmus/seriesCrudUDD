@@ -1,5 +1,5 @@
 import express from 'express'
-import { createSerie, deleteSerie, updateSerie } from './src/controllers/controlsSeries.js';
+import { getAllSeries, getSerieById, createSerie, deleteSerie, updateSerie } from './src/controllers/controlsSeries.js';
 
 
 
@@ -12,10 +12,8 @@ app.use(express.urlencoded({ extended: true }))
 
 app.get('/series', async (req, res) => {
     try {
-  
       const series = await getAllSeries();
       res.status(200).json({ message: 'Series leídas con éxito', series });
-  
     } catch (error) {
       res.status(404).json({ message: 'Series no encontradas', error});
     }
@@ -23,7 +21,6 @@ app.get('/series', async (req, res) => {
   
   app.get('/series/id/:id', async (req, res) => {
     try {
-  
       const id = parseInt(req.params.id);
       const serie = await getSerieById(id);
       console.log(serie);
@@ -37,15 +34,11 @@ app.get('/series', async (req, res) => {
 app.post('/series', async (req, res) => {
     //req = request = petición del cliente y res = response = respuesta del servidor
     try {
-
         const {id, name, gender, released, season, author} = req.body
         const seriesPost = await createSerie(id, name, gender, released, season, author)
         console.log(seriesPost)
         res.status(201).json({message: 'Serie creada con éxito', status: 201, seriesPost})
-
     } catch (error) {
-
-        console.log(error)
         res.status(500).json({message: 'Lo sentimos! no pudimos crear la serie', status: 500, error})
     }
 })
