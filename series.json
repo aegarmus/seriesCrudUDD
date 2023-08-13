@@ -1,2 +1,17 @@
-[]
-
+[
+    {
+        "id": 2,
+        "name": "Hora de Aventura",
+        "gender": "Animación",
+        "released": "05/04/2010",
+        "season": 10,
+        "author": "Pendleton Ward"
+    },
+    {
+        "id": 3,
+        "name": "Star Wars",
+        "gender": "Ciencia ficción",
+        "season": 9,
+        "author": "George Lucas"
+    }
+]
